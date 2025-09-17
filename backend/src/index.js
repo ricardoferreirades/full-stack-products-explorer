@@ -5,7 +5,6 @@ const killPort = require('kill-port');
 const path = require('path');
 const itemsRouter = require('./routes/items');
 const statsRouter = require('./routes/stats');
-const { initRuntimeConfig } = require('./config/runtimeConfig');
 require('dotenv').config();
 
 const app = express();
@@ -30,7 +29,6 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const startServer = (port) => {
-    initRuntimeConfig();
     const server = app.listen(port, () => {
         console.log(`Backend running on http://localhost:${port}`);
     });
